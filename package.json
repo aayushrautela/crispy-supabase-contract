@@ -1,6 +1,6 @@
 {
   "name": "@crispy-streaming/supabase-contract",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Shared Supabase database contract and Zod validators for Crispy clients",
   "license": "MIT",
   "type": "module",
