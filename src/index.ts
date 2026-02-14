@@ -7,7 +7,7 @@ export type {
   TableInsert,
   TableRow,
   TableUpdate,
-} from './database.types';
+} from './database.types.js';
 
 export {
   avatarUrlSchema,
@@ -19,6 +19,6 @@ export {
   parseMembershipPayload,
   passwordSchema,
   profileNameSchema,
-} from './validators';
+} from './validators.js';
 
-export type { HouseholdRole as HouseholdRoleValue, MembershipRecord } from './validators';
+export type { HouseholdRole as HouseholdRoleValue, MembershipRecord } from './validators.js';
