@@ -160,7 +160,20 @@ export interface Database {
       };
     };
     Views: {
-      [_ in never]: never;
+      household_primary_profiles: {
+        Row: {
+          id: string;
+          household_id: string;
+          name: string;
+          avatar: string | null;
+          order_index: number;
+          last_active_at: string | null;
+          created_by: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Relationships: [];
+      };
     };
     Functions: {
       ensure_household_membership: {
@@ -224,3 +237,5 @@ export type TableUpdate<T extends keyof Database['public']['Tables']> =
 
 export type ProfileRow = TableRow<'profiles'>;
 export type HouseholdMemberRow = TableRow<'household_members'>;
+export type HouseholdPrimaryProfileRow =
+  Database['public']['Views']['household_primary_profiles']['Row'];

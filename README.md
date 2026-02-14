@@ -36,6 +36,27 @@ type Db = Database;
 - Database helper types from `database.types.ts`
 - Zod schemas and parser helpers from `validators.ts`
 
+## Primary Profile
+
+If you want a single "primary" profile per household, create this view in Supabase.
+
+Rule: `order_index` asc, then `created_at` asc, then `id` asc; pick the first.
+
+```sql
+-- One row per household.
+-- Requires Postgres 15+ for security_invoker.
+create or replace view public.household_primary_profiles
+with (security_invoker = true) as
+select distinct on (p.household_id)
+  p.*
+from public.profiles p
+order by p.household_id, p.order_index asc, p.created_at asc, p.id asc;
+
+-- Optional but recommended for fast lookups.
+create index if not exists profiles_household_primary_sort_idx
+on public.profiles (household_id, order_index, created_at, id);
+```
+
 ## Development
 
 ```bash

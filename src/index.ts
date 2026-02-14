@@ -4,6 +4,7 @@ export type {
   Json,
   ProfileRow,
   HouseholdMemberRow,
+  HouseholdPrimaryProfileRow,
   TableInsert,
   TableRow,
   TableUpdate,
